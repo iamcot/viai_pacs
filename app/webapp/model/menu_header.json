@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "key": "main",
+            "title": "menuHome",
+            "icon": "sap-icon://home"
+        },
+        {
+            "key": "visits",
+            "title": "menuPatientVisits",
+            "icon": "sap-icon://visits"
+        },
+        {
+            "key": "medicalReports",
+            "title": "menuMedicalReports",
+            "icon": "sap-icon://electronic-medical-record"
+        }
+    ]
+}

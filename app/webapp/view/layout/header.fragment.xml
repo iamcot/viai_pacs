@@ -1,0 +1,63 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolHeader id="header">
+        <Image
+            id="logoImage"
+            height="1.5rem"
+            class="sapUiSmallMarginBegin"
+            src="img/logo2.png"
+        />
+        <!-- <Title
+                    id="appTitle"
+                    level="H1"
+                    text="{i18n>appTitle}"
+                /> -->
+        <Text
+            id="appSubtitle"
+            text="{i18n>appSubtitle}"
+            class="sapUiSmallMarginBegin"
+        />
+        <ToolbarSpacer id="subHeaderToolbarSpacer1" />
+        <Button
+            id="notificationButton"
+            icon="sap-icon://bell"
+        />
+        <Avatar
+            id="profileAvatar"
+            src="#"
+            displaySize="XS"
+            tooltip="Profile"
+        >
+            <layoutData>
+                <OverflowToolbarLayoutData
+                    id="profileAvatarLayoutData"
+                    priority="NeverOverflow"
+                />
+            </layoutData>
+        </Avatar>
+    </tnt:ToolHeader>
+    <IconTabHeader
+        id="headerTabs"
+        items="{menu_header>/items}"
+        mode="Inline"
+        selectedKey="{menu_header>/selectedKey}"
+        select="onChangeTab"
+    >
+        <layoutData>
+            <OverflowToolbarLayoutData
+                priority="NeverOverflow"
+                shrinkable="true"
+            />
+        </layoutData>
+        <items>
+            <IconTabFilter
+                key="{menu_header>key}"
+                text="{path: 'menu_header>title', formatter: '.formatter.translateText'}"
+                icon="{menu_header>icon}"
+            />
+        </items>
+    </IconTabHeader>
+</core:FragmentDefinition>

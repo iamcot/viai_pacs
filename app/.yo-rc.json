@@ -1,0 +1,18 @@
+{
+  "generator-ui5-app": {
+    "namespace": "vn.viaihealth.pacs_ui",
+    "framework": "OpenUI5",
+    "frameworkVersion": "1.89.0",
+    "author": "viaiHEALTH",
+    "initrepo": false,
+    "appId": "vn.viaihealth.pacs_ui",
+    "appURI": "vn/viaihealth/pacs_ui",
+    "cdnDomain": "sdk.openui5.org",
+    "defaultTheme": "sap_fiori_3",
+    "qunitCoverageFile": "qunit-coverage.js",
+    "gte1_98_0": false,
+    "gte1_104_0": false,
+    "lt1_124_0": true,
+    "setupCompleted": true
+  }
+}

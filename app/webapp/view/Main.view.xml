@@ -1,0 +1,20 @@
+<mvc:View
+    controllerName="vn.viaihealth.pacs_ui.controller.Main"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+>
+    <Page showHeader="false">
+        <headerContent>
+            
+        </headerContent>
+        <content>
+            <Text
+                text="This is the main content of your application."
+                class="sapUiSmallMargin"
+            />
+        </content>
+    </Page>
+</mvc:View>

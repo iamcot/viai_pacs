@@ -1,0 +1,73 @@
+{
+	"patients": [
+		{
+			"id": "1",
+			"name": "Nguyễn Văn A",
+			"age": 30,
+			"gender": "Nam",
+            "status": "Đang điều trị",
+            "address": "123 Đường ABC, Quận 1, TP.HCM",
+            "phone": "0123456789",
+			"visits": [
+				{
+					"id": "v1",
+					"date": "2023-01-01",
+					"reason": "Khám bệnh"
+				},
+				{
+					"id": "v2",
+					"date": "2023-02-01",
+					"reason": "Tái khám"
+				}
+			]
+		},
+		{
+			"id": "2",
+			"name": "Trần Thị B",
+			"age": 25,
+			"gender": "Nữ",
+            "status": "Đã xuất viện",
+            "address": "456 Đường DEF, Quận 2, TP.HCM",
+            "phone": "0987654321",
+			"visits": [
+				{
+					"id": "v3",
+					"date": "2023-01-15",
+					"reason": "Khám bệnh"
+				}
+			]
+		},
+        {
+            "id": "3",
+            "name": "Lê Văn C",
+            "age": 40,
+            "gender": "Nam",
+            "status": "Đang điều trị",
+            "address": "789 Đường GHI, Quận 3, TP.HCM",
+            "phone": "0123456789",
+            "visits": [
+                {
+                    "id": "v5",
+                    "date": "2023-01-20",
+                    "reason": "Khám bệnh"
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Phạm Thị D",
+            "age": 35,
+            "gender": "Nữ",
+            "status": "Mới đăng ký",
+            "address": "101 Đường JKL, Quận 4, TP.HCM",
+            "phone": "0123456789",
+            "visits": [
+                {
+                    "id": "v6",
+                    "date": "2023-01-25",
+                    "reason": "Khám bệnh"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: viai PACS
+server:
+  port: 8081
