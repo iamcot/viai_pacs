@@ -11,6 +11,7 @@ framework:
     - name: themelib_sap_horizon
     - name: sap.tnt
     - name: sap.f
+    - name: sap.uxap
 builder:
   resources:
     excludes:

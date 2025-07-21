@@ -24,9 +24,17 @@ sap.ui.define([
 		},
 
 		onItemPress: function (oEvent) {
-			var oFCL = this.oView.getParent().getParent();
+			var patientPath = oEvent.getSource().getBindingContext("patients").getPath(),
+				patient = patientPath.split("/").slice(-1).pop(),
+				nextUIState;
+			this.getOwnerComponent().getHelper().then(function (helper) {
+				nextUIState = helper.getNextUIState(1);
+				this.getRouter().navTo("patient", {
+					layout: nextUIState.layout,
+					patient: patient
+				});
+			}.bind(this));
 
-			oFCL.setLayout(fioriLibrary.LayoutType.TwoColumnsMidExpanded);
 		}
 	});
 });

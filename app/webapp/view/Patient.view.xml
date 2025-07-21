@@ -1,0 +1,78 @@
+<mvc:View
+	controllerName="vn.viaihealth.pacs_ui.controller.Patient"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+    <ObjectPageLayout
+        id="patientDetailPage"
+        showTitleInHeaderContent="true"
+        preserveHeaderStateOnScroll="false"
+        headerContentPinnable="false"
+        isChildPage="true"
+        upperCaseAnchorBar="true"
+    >
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <actions>
+                    <m:ToggleButton
+                        text="{i18n>Edit}"
+                        type="Emphasized"
+                        press="onEditPress"
+                    />
+                    <m:Button
+                        text="{i18n>Delete}"
+                        type="Transparent"
+                        press="onDeletePress"
+                    />
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+        <headerContent>
+            <m:FlexBox
+                wrap="Wrap"
+                fitContainer="true"
+                alignItems="Stretch"
+            >
+                <m:VBox
+                    justifyContent="Center"
+                    class="sapUiSmallMarginEnd"
+                >
+                    <m:Label text="{patient>name}" />
+                </m:VBox>
+            </m:FlexBox>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection title="{i18n>patientGeneralInfo}">
+                <subSections>
+                    <ObjectPageSubSection title="{i18n>patientPersonalDetails}">
+                        <blocks>
+                            <m:Text text="Tuổi: " />
+                            <m:Text text="Giới tn" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <ObjectPageSection title="{i18n>patientMedicalHistory}">
+                <subSections>
+                    <ObjectPageSubSection title="{i18n>patientAllergies}">
+                        <blocks>
+                            <m:Text text="{patients>allergies}" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+		
+		<footer>
+			<m:OverflowToolbar >
+				<m:ToolbarSpacer />
+				<m:Button type="Accept" text="{i18n>Save}"></m:Button>
+				<m:Button type="Reject" text="{i18n>Cancel}"></m:Button>
+			</m:OverflowToolbar>
+		</footer>
+    </ObjectPageLayout>
+</mvc:View>

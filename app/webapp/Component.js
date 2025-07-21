@@ -1,4 +1,7 @@
-sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models"], function (UIComponent, Device, models) {
+sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models",
+	'sap/f/FlexibleColumnLayoutSemanticHelper',
+	'sap/f/library'
+], function (UIComponent, Device, models, FlexibleColumnLayoutSemanticHelper, fioriLibrary) {
 	"use strict";
 
 	return UIComponent.extend("vn.viaihealth.pacs_ui.Component", {
@@ -7,14 +10,17 @@ sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models"], fu
 			interfaces: ["sap.ui.core.IAsyncContentCreation"]
 		},
 		init: function () {
+			var router;
 			// call the base component's init function
-			UIComponent.prototype.init.call(this); // create the views based on the url/hash
+			UIComponent.prototype.init.apply(this, arguments); // create the views based on the url/hash
 
+			router = this.getRouter();
+			router.attachBeforeRouteMatched(this.onBeforeRouteMatched, this);
 			// create the device model
 			this.setModel(models.createDeviceModel(), "device");
 
 			// create the views based on the url/hash
-			this.getRouter().initialize();
+			router.initialize();
 		},
 		/**
 		 * This method can be called to determine whether the sapUiSizeCompact or sapUiSizeCozy
@@ -36,6 +42,40 @@ sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models"], fu
 				}
 			}
 			return this.contentDensityClass;
+		},
+		getHelper: function () {
+			return this.getFcl().then(function (fcl) {
+				var settings = {
+					defaultTwoColumnLayoutType: fioriLibrary.LayoutType.TwoColumnsMidExpanded,
+					defaultThreeColumnLayoutType: fioriLibrary.LayoutType.ThreeColumnsMidExpanded
+				};
+				return FlexibleColumnLayoutSemanticHelper.getInstanceFor(fcl, settings);
+			});
+		},
+		getFcl: function () {
+			return new Promise(function (resolve, reject) {
+				var fcl = this.getRootControl().byId('pacsFlexibleColumnLayout');
+				if (fcl) {
+					this.getRootControl().attachAfterInit(function (event) {
+						resolve(event.getSource().byId('pacsFlexibleColumnLayout'));
+					}, this);
+					return;
+				}
+				resolve(fcl);
+			}.bind(this));
+		},
+		onBeforeRouteMatched: function (event) {
+			var model = this.getModel(),
+				layout = event.getParameters().arguments.layout,
+				nextUIState;
+			if (!layout) {
+				this.getHelper().then(function (helper) {
+					nextUIState = helper.getNextUIState(0);
+					model.setProperty("/layout", nextUIState.layout);
+				});
+				return;
+			}
+			model.setProperty("/layout", layout);
 		}
 	});
 });

@@ -1,20 +1,16 @@
 <mvc:View
     controllerName="vn.viaihealth.pacs_ui.controller.Main"
-    displayBlock="true"
     xmlns="sap.m"
+    xmlns:f="sap.f"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:core="sap.ui.core"
-    xmlns:tnt="sap.tnt"
 >
-    <Page showHeader="false">
-        <headerContent>
-            
-        </headerContent>
-        <content>
-            <Text
-                text="This is the main content of your application."
-                class="sapUiSmallMargin"
-            />
-        </content>
-    </Page>
+    <f:DynamicPage toggleHeaderOnTitleClick="false">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Main hospital page" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+    </f:DynamicPage>
 </mvc:View>

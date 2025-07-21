@@ -1,6 +1,5 @@
 {
 	"_version": "1.12.0",
-
 	"sap.app": {
 		"id": "vn.viaihealth.pacs_ui",
 		"type": "application",
@@ -15,7 +14,6 @@
 			"version": "1.1.0"
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {},
@@ -25,38 +23,39 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "vn.viaihealth.pacs_ui.view.App",
 			"type": "XML",
-			"id": "app"
+			"id": "fcl",
+			"async": true
 		},
 		"flexEnabled": false,
-
 		"dependencies": {
 			"minUI5Version": "1.136.0",
 			"libs": {
 				"sap.ui.core": {},
 				"sap.m": {},
 				"sap.tnt": {},
-				"sap.f": {}
+				"sap.f": {},
+				"sap.uxap": {},
+				"sap.ui.layout": {}
 			}
 		},
-
 		"handleValidation": true,
-
 		"contentDensities": {
 			"compact": true,
 			"cozy": true
 		},
-
 		"models": {
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "vn.viaihealth.pacs_ui.i18n.i18n",
-					"supportedLocales": ["en", "vi"],
+					"supportedLocales": [
+						"en",
+						"vi"
+					],
 					"fallbackLocale": ""
 				}
 			},
@@ -71,39 +70,54 @@
 				"uri": "model/patients.json"
 			}
 		},
-
 		"routing": {
 			"config": {
-				"routerClass": "sap.m.routing.Router",
+				"routerClass": "sap.f.routing.Router",
+				"type": "View",
 				"viewType": "XML",
-				"viewPath": "vn.viaihealth.pacs_ui.view",
-				"controlId": "app",
-				"controlAggregation": "pages",
+				"path": "vn.viaihealth.pacs_ui.view",
+				"controlId": "pacsFlexibleColumnLayout",
+				"transition": "slide",
+				"bypassed": {},
 				"async": true
 			},
 			"routes": [
 				{
 					"pattern": "",
 					"name": "main",
-					"target": "main"
+					"target": "main",
+					"layout": "EndColumnFullScreen"
 				},
 				{
-					"pattern": "visits",
+					"pattern": ":layout:",
 					"name": "visits",
-					"target": "visits"
+					"target": [
+						"visits",
+						"patient"
+					]
+				},
+				{
+					"pattern": "visits/{patient}/{layout}",
+					"name": "patient",
+					"target": [
+						"visits",
+						"patient"
+					]
 				}
-			
 			],
 			"targets": {
 				"main": {
-					"viewId": "main",
-					"viewName": "Main"
+					"name": "Main",
+					"controlAggregation": "endColumnPages"
 				},
 				"visits": {
-					"viewId": "visits",
-					"viewName": "Visits"
+					"name": "Visits",
+					"controlAggregation": "beginColumnPages"
+				},
+				"patient": {
+					"name": "Patient",
+					"controlAggregation": "midColumnPages"
 				}
-			
 			}
 		}
 	}
